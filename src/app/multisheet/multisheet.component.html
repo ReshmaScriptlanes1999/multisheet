@@ -1,2 +1,97 @@
-<p>multisheet works!</p>
-<input type="file" (change)="openFile()">
+<div style="width: 50%; margin-left:20%">
+  <h3 style="text-align: center;">Excel data</h3>
+
+  <input type="file" (change)="ReadExcel($event)">
+
+  <mat-tab-group>
+    <div *ngFor="let outer of QuestionData">
+      <mat-tab label="{{outer.name}}">
+       
+           <li *ngFor="let inner of outer.data; let index=index;">{{inner.Question}}
+            <br><input  type="radio" (change)="change(inner.a,index)" [checked]="inner.userSelected === inner.a" [value]="inner.a">{{inner.a}}
+      <br><input  type="radio" (change)="change(inner.b,index)" [checked]="inner.userSelected === inner.b" [value]="inner.b" >{{inner.b}}
+      <br><input  type="radio" (change)="change(inner.c,index)" [checked]="inner.userSelected === inner.c" [value]="inner.c" >{{inner.c}}
+      <br><input  type="radio" (change)="change(inner.d,index)" [checked]="inner.userSelected === inner.d" [value]="inner.d" >{{inner.d}}
+     <br>
+      <span>
+        {{inner.userSelected === inner.Ans ? 'Correct ' :'Wrong' }}
+      </span>
+
+      <br>
+  </li>
+  <button (click)="onSubmitHandler()">
+    Submit All Answer
+  </button>
+          
+           </mat-tab>
+           </div>
+        </mat-tab-group>
+      </div>
+      
+       <!-- <div *ngFor="let a of angular">
+          <mat-tab label="{{a.name}}">{{a.data[0]|json}}</mat-tab>
+        </div>
+      -->
+
+
+
+    <!--<mat-tab label=Angular>
+      <li scope="col" *ngFor="let outer of QuestionData; let index=index">{{outer.Question}} 
+            <tr *ngFor="let inner of QuestionData.bigdata">{{inner}} -->
+      <!-- (change)="change(data.a,index)" [checked]="data.userSelected === data.a" [value]="data.a">{{data.a}} -->
+      <!-- <li scope="col" *ngFor="let outer of bigdata"> {{outer.Question}} <br>
+              {{outer.a}}
+                {{outer.Question}}-->
+
+      <!-- <li scope="col" *ngFor="let inner of QuestionData">{{inner.Question}}
+        <tr scope="col" *ngFor="let outer of inner.bigdata;let index=index;">Question<br>
+          {{outer.Question}}
+          <br><input type="radio" (change)="change(outer.a,index)" [checked]="outer.userSelected === outer.a"
+            [value]="outer.a">{{outer.a}}
+          <br><input type="radio" (change)="change(outer.b,index)" [checked]="outer.userSelected === outer.b"
+            [value]="outer.b">{{outer.b}}
+          <br><input type="radio" (change)="change(outer.c,index)" [checked]="outer.userSelected === outer.c"
+            [value]="outer.c">{{outer.c}}
+          <br><input type="radio" (change)="change(outer.d,index)" [checked]="outer.userSelected === outer.d"
+            [value]="outer.d">{{outer.d}}
+ -->
+
+
+
+
+
+
+          <!--  <li scope="col" *ngFor="let inner of outer.bigdata">-->
+          <!--<li *ngFor="let inner of outer.bigdata"></li>Question{{data}}
+                -->
+          <!--    <li scope="col" *ngFor="let data of QuestionData; let index=index;">Question{{data|json}}</li>
+        -->
+
+        
+      <!-- <tr *ngFor="let inner of outer.data; ">{{inner.Question}}-->
+
+      
+     <!-- <tr *ngFor="let inner of outer.data;index=index">Question{{inner.Question}}<br>
+        <input type="radio"  (change)="change(inner.a,index)" [checked]="inner.userSelected === inner.a" [value]="inner.a">{{inner.a}}<br>
+    {{inner.b}}<br>
+  {{inner.c}}<br>
+{{inner.d}}</tr>-->
+
+  <!--<li scope="col" *ngFor="let data of ExcelData;let index=index;">Question<br>
+		{{data.Questions}}
+		<br><input  type="radio"  (change)="change(data.a,index)" [checked]="data.userSelected === data.a" [value]="data.a">{{data.a}}
+		<br><input  type="radio" (change)="change(data.b,index)" [checked]="data.userSelected === data.b" [value]="data.b" >{{data.b}}
+		<br><input  type="radio" (change)="change(data.c,index)" [checked]="data.userSelected === data.c" [value]="data.c" >{{data.c}}
+		<br><input  type="radio" (change)="change(data.d,index)" [checked]="data.userSelected === data.d" [value]="data.d" >{{data.d}}
+
+		<br>
+		<br >
+    <span>
+      {{data.userSelected === data.correctanswer ? 'Correct ' :'Wrong' }}
+    </span>
+		<br>
+</li>
+<button (click)="onSubmitHandler()">
+  Submit All Answer
+</button>
+-->
