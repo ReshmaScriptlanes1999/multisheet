@@ -6,17 +6,27 @@ import { AppComponent } from './app.component';
 import { MultisheetComponent } from './multisheet/multisheet.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SinglesheetComponent } from './singlesheet/singlesheet.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
+//import { NgbdPaginationBasic } from '@angular/material/pagination-basic';
 @NgModule({
   declarations: [
     AppComponent,
-    MultisheetComponent
+    MultisheetComponent,
+    SinglesheetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatRadioModule,
+    FormsModule,
+    NgxPaginationModule
+       // NgbdPaginationBasic
   ],
   providers: [],
   bootstrap: [AppComponent]

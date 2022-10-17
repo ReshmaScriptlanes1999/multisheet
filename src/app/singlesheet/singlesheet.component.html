@@ -1,0 +1,24 @@
+<p>singlesheet works!</p>
+<div style="width: 50%; margin-left:20%">
+	<h3 style="text-align: center;">Excel data</h3>
+
+	<input type="file" (change)="ReadExcel($event)">
+
+	<li scope="col" *ngFor="let data of ExcelData;let index=index;">Question<br>
+		{{data.Questions}}
+		<br><input  type="radio"  (change)="change(data.a,index)" [checked]="data.userSelected === data.a" [value]="data.a">{{data.a}}
+		<br><input  type="radio" (change)="change(data.b,index)" [checked]="data.userSelected === data.b" [value]="data.b" >{{data.b}}
+		<br><input  type="radio" (change)="change(data.c,index)" [checked]="data.userSelected === data.c" [value]="data.c" >{{data.c}}
+		<br><input  type="radio" (change)="change(data.d,index)" [checked]="data.userSelected === data.d" [value]="data.d" >{{data.d}}
+
+		<br>
+		<br >
+    <span>
+      {{data.userSelected === data.correctanswer ? 'Correct ' :'Wrong' }}
+    </span>
+		<br>
+</li>
+<button (click)="onSubmitHandler()">
+  Submit All Answer
+</button>
+</div>

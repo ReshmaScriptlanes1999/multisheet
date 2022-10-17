@@ -7,32 +7,52 @@
     <div *ngFor="let outer of QuestionData">
       <mat-tab label="{{outer.name}}">
        
-           <li *ngFor="let inner of outer.data; let index=index;">{{inner.Question}}
-            <br><input  type="radio" (change)="change(inner.a,index)" [checked]="inner.userSelected === inner.a" [value]="inner.a">{{inner.a}}
-      <br><input  type="radio" (change)="change(inner.b,index)" [checked]="inner.userSelected === inner.b" [value]="inner.b" >{{inner.b}}
-      <br><input  type="radio" (change)="change(inner.c,index)" [checked]="inner.userSelected === inner.c" [value]="inner.c" >{{inner.c}}
-      <br><input  type="radio" (change)="change(inner.d,index)" [checked]="inner.userSelected === inner.d" [value]="inner.d" >{{inner.d}}
+          <!-- <li *ngFor="let data of outer.data; let index=index;">{{inner.Question}}
+            <br><input  type="radio" name="{{index}}" value="a" ([ngModel])="inner.a"  (ngModelChange)="change()" (ngModelChange)="inner.a = $event">{{inner.a}}
+      <br><input  type="radio" name="{{index}}" value="b" ([ngModel])="inner.b"  (ngModelChange)="change()" (ngModelChange)="inner.b = $event">{{inner.b}}
+      <br><input  type="radio" name="{{index}}" value="c" ([ngModel])="inner.c">{{inner.c}}
+      <br><input  type="radio" name="{{index}}" value="d" ([ngModel])="inner.d">{{inner.d}}
      <br>
+      <span>
+        {{inner.userSelected }}
+      </span>
+    -->
+
+
+    <li scope="col" *ngFor="let inner of outer.data | paginate: { itemsPerPage: 1, currentPage: page } let index=index;">{{inner.Question}}<br>
+     
+      <br><input  type="radio"   (change)="change(inner.a,index)" [checked]="inner.userSelected === inner.a" [value]="inner.a">{{inner.a}}
+      <br><input  type="radio" (change)="change(inner.b,index)" [checked]="inner.userSelected === inner.b" [value]="inner.b" >{{inner.b}}
+      <br><input  type="radio"  (change)="change(inner.c,index)" [checked]="inner.userSelected === inner.c" [value]="inner.c" >{{inner.c}}
+      <br><input  type="radio" (change)="change(inner.d,index)" [checked]="inner.userSelected === inner.d" [value]="inner.d" >{{inner.d}}
+      <br>
+      <br >
       <span>
         {{inner.userSelected === inner.Ans ? 'Correct ' :'Wrong' }}
       </span>
 
       <br>
-  </li>
-  <button (click)="onSubmitHandler()">
-    Submit All Answer
-  </button>
-          
+     
+
+
+    </li>
+    <br>
+ 
+  
            </mat-tab>
            </div>
+          
+
         </mat-tab-group>
+        <pagination-controls (pageChange)="handlePageChange($event)" previousLabel="Previous" nextLabel="Next"></pagination-controls>
       </div>
-      
+    
+
        <!-- <div *ngFor="let a of angular">
           <mat-tab label="{{a.name}}">{{a.data[0]|json}}</mat-tab>
         </div>
       -->
-
+      
 
 
     <!--<mat-tab label=Angular>
