@@ -76,6 +76,7 @@ export class MultisheetComponent implements OnInit {
    this.userSelected= event.target.value; 
  }*/
  change(data: any, index: any) {
+  
 //  this.QuestionData.data[index].userSelected = data;
 console.log("iiii"+index)
   this.QuestionData[0].data[index].userSelected = data;

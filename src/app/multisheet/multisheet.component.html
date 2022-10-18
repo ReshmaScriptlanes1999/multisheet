@@ -4,7 +4,7 @@
   <input type="file" (change)="ReadExcel($event)">
 
   <mat-tab-group>
-    <div *ngFor="let outer of QuestionData">
+    <div *ngFor="let outer of QuestionData | paginate: { itemsPerPage: 1, currentPage: page }    ;  ">
       <mat-tab label="{{outer.name}}">
        
           <!-- <li *ngFor="let data of outer.data; let index=index;">{{inner.Question}}
@@ -19,8 +19,9 @@
     -->
 
 
-    <li scope="col" *ngFor="let inner of outer.data | paginate: { itemsPerPage: 1, currentPage: page } let index=index;">{{inner.Question}}<br>
-     
+    <li scope="col" *ngFor="let inner of outer.data let index=index ;">{{inner.Question}}<br>
+     <!-- <li *ngFor="let aa of inner let index=index "> -->
+      
       <br><input  type="radio"   (change)="change(inner.a,index)" [checked]="inner.userSelected === inner.a" [value]="inner.a">{{inner.a}}
       <br><input  type="radio" (change)="change(inner.b,index)" [checked]="inner.userSelected === inner.b" [value]="inner.b" >{{inner.b}}
       <br><input  type="radio"  (change)="change(inner.c,index)" [checked]="inner.userSelected === inner.c" [value]="inner.c" >{{inner.c}}
